@@ -1,0 +1,40 @@
+﻿<Window x:Class="DreamsWork.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DreamsWork"
+        mc:Ignorable="d"
+        Title="Login" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="104"/>
+            <ColumnDefinition Width="421"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="66"/>
+            <RowDefinition Height="47"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="87"/>
+        </Grid.RowDefinitions>
+        <TextBlock Height="23" HorizontalAlignment="Center" Name="LoginHeading" Text="Login:" VerticalAlignment="Center" FontSize="17" FontStretch="ExtraCondensed" Width="46"/>
+        <TextBlock Height="50" Background="#B0A888" HorizontalAlignment="Left" Margin="24,0,0,0" Name="textBlockHeading" VerticalAlignment="Center" FontSize="12" FontStyle="Italic" Padding="5" Grid.Row="1" Grid.ColumnSpan="2" Width="444">  
+            Примечание: Пожалуйста, войдите здесь, чтобы ознакомиться с функциями<LineBreak /><!--line break-->  
+            этого сайта если еще не входили то нажмите
+           <!--текстовый блок в качестве гиперссылки.-->  
+            <TextBlock Margin="5 5 5 5">  
+                 <Hyperlink Click="ButtonRegister_Click" FontSize="14" FontStyle="Normal">Зарегистрироваться</Hyperlink>  
+            </TextBlock>  
+            <!--end textblock as a hyperlink-->  
+ 
+        </TextBlock>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="42,14,0,0" Name="textBlock1" Text="Email" VerticalAlignment="Top" Width="58" Grid.Row="2" Grid.Column="0" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="42,0,0,0" Name="textBlock2" Text="Password" VerticalAlignment="Center" Width="58" Grid.Row="3" Grid.Column="0" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="14,0,0,0" Name="textBoxEmail" VerticalAlignment="Center" Width="247"  Grid.Row="2" Grid.Column="1" />
+        <PasswordBox Height="23" HorizontalAlignment="Left" Margin="14,0,0,0" Name="TxbPassword" VerticalAlignment="Center" Width="247" Grid.Row="3" Grid.Column="1" />
+        <Button Content="Login" Background="#9e977a" Height="23" HorizontalAlignment="Left" Margin="14,8,0,0" Name="button1" VerticalAlignment="Top" Width="104" Click="Login_Click" Grid.Row="4" Grid.Column="1" />
+        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="ErrorsMessage" VerticalAlignment="Top" Width="350" Margin="14 9 0 0"  OpacityMask="Crimson" Foreground="#FFE5572C" Grid.Row="5" Grid.Column="1"  />
+    </Grid>
+</Window>
