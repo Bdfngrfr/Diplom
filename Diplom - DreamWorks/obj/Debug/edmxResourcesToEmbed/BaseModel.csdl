@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agency">
+    <Key>
+      <PropertyRef Name="Id_Agency" />
+    </Key>
+    <Property Name="Id_Agency" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Animators" Relationship="Self.FK_Animators_Agencies" FromRole="Agencies" ToRole="Animators" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Animator">
+    <Key>
+      <PropertyRef Name="Id_Animator" />
+    </Key>
+    <Property Name="Id_Animator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Agency" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Agency" Relationship="Self.FK_Animators_Agencies" FromRole="Animators" ToRole="Agencies" />
+    <NavigationProperty Name="Holidays" Relationship="Self.FK_Holidays_Animators" FromRole="Animators" ToRole="Holidays" />
+    <Property Name="LFName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="Id_Holiday" />
+    </Key>
+    <Property Name="Id_Holiday" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Animator" Type="Int32" Nullable="false" />
+    <Property Name="Date_Holiday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Start_Time" Type="Time" Nullable="false" Precision="5" />
+    <Property Name="Garland" Type="Int32" />
+    <Property Name="Firework" Type="Int32" />
+    <Property Name="Petard" Type="Int32" />
+    <Property Name="Event" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PriceGarland" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="PriceFirework" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="PricePetard" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Animator" Relationship="Self.FK_Holidays_Animators" FromRole="Holidays" ToRole="Animators" />
+    <Property Name="Service_animator" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Animators_Agencies">
+    <End Role="Agencies" Type="Self.Agency" Multiplicity="1" />
+    <End Role="Animators" Type="Self.Animator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agencies">
+        <PropertyRef Name="Id_Agency" />
+      </Principal>
+      <Dependent Role="Animators">
+        <PropertyRef Name="Id_Agency" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Holidays_Animators">
+    <End Role="Animators" Type="Self.Animator" Multiplicity="1" />
+    <End Role="Holidays" Type="Self.Holiday" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Animators">
+        <PropertyRef Name="Id_Animator" />
+      </Principal>
+      <Dependent Role="Holidays">
+        <PropertyRef Name="Id_Animator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DreamsWorksEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agencies" EntityType="Self.Agency" />
+    <EntitySet Name="Animators" EntityType="Self.Animator" />
+    <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Animators_Agencies" Association="Self.FK_Animators_Agencies">
+      <End Role="Agencies" EntitySet="Agencies" />
+      <End Role="Animators" EntitySet="Animators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Holidays_Animators" Association="Self.FK_Holidays_Animators">
+      <End Role="Animators" EntitySet="Animators" />
+      <End Role="Holidays" EntitySet="Holidays" />
+    </AssociationSet>
+    <EntitySet Name="Types_Events" EntityType="Model.Types_Events" />
+  </EntityContainer>
+  <EntityType Name="Types_Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event" Type="String" Nullable="false" MaxLength="35" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Rate" Type="Int32" />
+  </EntityType>
+</Schema>

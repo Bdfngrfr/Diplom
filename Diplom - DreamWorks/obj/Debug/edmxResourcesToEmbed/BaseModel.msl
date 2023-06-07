@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="DreamsWorksEntities">
+    <EntitySetMapping Name="Agencies">
+      <EntityTypeMapping TypeName="Model.Agency">
+        <MappingFragment StoreEntitySet="Agencies">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Id_Agency" ColumnName="Id_Agency" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Animators">
+      <EntityTypeMapping TypeName="Model.Animator">
+        <MappingFragment StoreEntitySet="Animators">
+          <ScalarProperty Name="LFName" ColumnName="LFName" />
+          <ScalarProperty Name="Id_Animator" ColumnName="Id_Animator" />
+          <ScalarProperty Name="Id_Agency" ColumnName="Id_Agency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Holidays">
+      <EntityTypeMapping TypeName="Model.Holiday">
+        <MappingFragment StoreEntitySet="Holidays">
+          <ScalarProperty Name="Service_animator" ColumnName="Service_animator" />
+          <ScalarProperty Name="Id_Holiday" ColumnName="Id_Holiday" />
+          <ScalarProperty Name="Id_Animator" ColumnName="Id_Animator" />
+          <ScalarProperty Name="Date_Holiday" ColumnName="Date_Holiday" />
+          <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+          <ScalarProperty Name="Garland" ColumnName="Garland" />
+          <ScalarProperty Name="Firework" ColumnName="Firework" />
+          <ScalarProperty Name="Petard" ColumnName="Petard" />
+          <ScalarProperty Name="Event" ColumnName="Event" />
+          <ScalarProperty Name="PriceGarland" ColumnName="PriceGarland" />
+          <ScalarProperty Name="PriceFirework" ColumnName="PriceFirework" />
+          <ScalarProperty Name="PricePetard" ColumnName="PricePetard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types_Events">
+      <EntityTypeMapping TypeName="Model.Types_Events">
+        <MappingFragment StoreEntitySet="Types_Events">
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Event" ColumnName="Event" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
